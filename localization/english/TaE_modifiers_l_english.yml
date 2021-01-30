@@ -1,0 +1,23 @@
+﻿#Modifier names
+
+l_english:
+
+#---------------------------------------Land Modifiers------------------------------------------------------------------------------#
+#+15% taxes, 15 opinion, -15% build time
+governance_1000_scholar_modifier:0 "Scholar County"
+
+#0.5 control gain/month, -25 opinion, 10% taxes, medium devlopment growth loss 
+governance_1001_tyranny_modifier:0 "Iron Fist"
+
+
+
+
+#---------------------------------------Characterr Modifiers------------------------------------------------------------------------------#
+# +3 learning 
+lifestyle_1000_learning_modifier:0 "Learned"
+
+#+2 learning, monthly learning +25%, massive learning boost, -1 health, 15% increased stress 
+lifestyle_1001_existentialism_modifier:0 "Existentialism realized"
+
+#medium health boost, 15% less stress gain, and 50% increased fertility 
+lifestyle_1002_little_things_modifier:0 "The little things in life"

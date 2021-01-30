@@ -1,0 +1,116 @@
+﻿l_english: 
+
+#TaE_chains.xxx.x:0 "xxxx"
+
+
+#Man or a Butterfly
+#By FleeceJohnson 
+
+#Initial Branch
+TaE_events_chains.1001.t:0 "A man or a butterfly?"
+TaE_events_chains.1001.desc:0 "I dreamed I was a butterfly, fluttering in the wind without a care in the world. As I was roused from my pleasant dream, I am left troubled in this waking world of what I had just dreamed. Did I dream of myself wanting to be a butterfly or was I a butterfly who is dreaming to be myself? I consulted with the most brilliant minds within my realm but to no avail."
+
+TaE_events_chains.1001.a:0 "There must be more than what meets the eye."        #A branch
+TaE_events_chains.1001.b:0 "An inconsequential dream"                           #Ends       
+TaE_events_chains.1001.c:0 "I vaguely remember a book by some master of old..." #B branch   Condition: learning>30 
+TaE_events_chains.1001.d:0 "Perhaps this is a sign for me to end it all..."     #Ends life  
+
+
+#A branch 
+TaE_events_chains.1002.t:0 "Seeking answers"
+TaE_events_chains.1002.desc:0 "Rumours are beginning to spread of their ruler spending hours in the study, searching for answers to some troubling dreams. Some are saying you are possessed, stricken with a madness by the gods for your sin, while others are beginning to form a cult in support of your beliefs. You are surprised that a simple dream had taken form in such magnitude, even more so that your dream is now circulating across the lands."
+
+TaE_events_chains.1002.a:0 "Quell the rumours and end this madness, a dream is not so much trouble"                     #Ending Base 
+TaE_events_chains.1002.b:0 "They dare call me a madman? Summon my troops and silence anyone that dare question me!"      #A1 Condition:Possessed/lunatic/paranoid/wrathful/vengeful/arbitrary/cynical
+TaE_events_chains.1002.c:0 "Yes, these dreams must be a sign from the gods, I must act upon this!"                      #A2 Condition Zealous, diligent, theologian
+TaE_events_chains.1002.d:0 "I could care less of what happens, I seek only the truth."                                  #A3 
+
+
+#A Branch choice 1 
+TaE_events_chains.1003.t:0 "Seeking answers, Order"
+TaE_events_chains.1003.desc:0 "I have forbidden any man, woman, or child to speak of such foul things about me, I am not mad! Curfew and censorship have been put in place, with soldiers patrolling the streets for graffiti and other manners of insult. The cult seems to have grown in size but no matter, I must find my answer one way or another!"
+
+TaE_events_chains.1003.a:0 "Continue to find an answer"                                                                 #A3
+TaE_events_chains.1003.b:0 "There must be more of them out there, summon my men again!"                                 #Ending 1 Condition: Possessed/lunatic/paranoid
+TaE_events_chains.1003.c:0 "Perhaps I should expand the cult more..."                                                   #A2 Condition: Zealous, diligent, theologian
+TaE_events_chains.1003.d:0 "What happened to me, this madness? I should stop this..."                                   #Ending Base    
+
+#A Branch choice 2 
+TaE_events_chains.1004.t:0 "A divine dream?"
+TaE_events_chains.1004.desc:0 "My followers grow everyday, with scholars and thinkers from all over coming to see this 'philosopher ruler', bearing gifts of both their knowledge and ancient texts. I have exhausted my own literary resources with little to no answers but it seems that I am not alone in my findings. Past philosophers have stumbled upon a similar subject much to my surprise and eventual annoyance, for there is no true answer. Maybe it was just a simple dream, or maybe this world is a dream. Regardless, I must now decide how to proceed."
+
+TaE_events_chains.1004.a:0 "This is an opportunity to use all of these bright minds!"               #Ending base
+TaE_events_chains.1004.b:0 "The people agree and so to are the heavens, this is no mere dreaam!"   #Branch C
+TaE_events_chains.1004.c:0 "Is my life truly meaningless? No, I must continue!"                     #A3 
+
+#A Branch choice 3
+TaE_events_chains.1005.t:0 "Coming to an answer"
+TaE_events_chains.1005.desc:0 "What is this waking world, what is its purpose? I am both intrigued and deeply troubled, has my life been devoid of meaning? What is life but a meaningless journey to the great unknown, with each man regardless of their stature waiting for death to claim them?"
+
+TaE_events_chains.1005.a:0 "I grow weary, it is time to wake up and focus on my duties..."          #ending 2
+TaE_events_chains.1005.b:0 "Unless..?"                                                              #A4 
+
+#A Branch choice 4
+TaE_events_chains.1006.t:0 "Hope"
+TaE_events_chains.1006.desc:0 "My spouse comes in to find me troubled, “What has been bothering you these past few days? You barely eat, drink, or even look at me!” I look at my spouse with a weak smile, perhaps there is more to life than what these texts say. “Here have something to eat.” I spent the rest of the day with my spouse, enjoying each other’s company and laughed for the first time in weeks. Life doesn’t have to be dull, it can be quite enjoyable it seems."
+
+TaE_events_chains.1006.a:0 "What do you say we take the week off?"                        #ending base
+#TaE_events_chains.1006.b:0 "Thank you, say do you want to..?"                            #ending base
+
+
+#B Branch
+
+TaE_events_chains.1007.t:0 "A glimpse into the past"
+TaE_events_chains.1007.desc:0 "Alas, I have found it, the concept known to the ancients as existentialism. There is some truth and logic to this, but how cynical! Afterall, words still stem from men and men still have their own opinions. Nevertheless, this could be very useful… "
+
+TaE_events_chains.1007.a:0 "I should explore subjects like these more often. Hire the brightest mind!"  #ending base
+TaE_events_chains.1007.b:0 "Perhaps I could create a following with this new idea..?"                                        #C branch 
+
+#C Branch
+TaE_events_chains.1008.t:0 "A divine revelation"
+TaE_events_chains.1008.desc:0 "It seems that my dream has become bigger than I have ever imagined with followers flocking by the hundreds per day. Beyond the monotony of daily life, this may have given people a chance to see past their sublime futures and into something greater than themselves and even greater than the heavens itself. For what is existence without purpose? This concept now known by the masses as existentialism is beginning to spread to neighboring rulers. Continuing this may prove to be both beneficial and dangerous, for an order on the lack of purpose smells like trouble… "
+
+TaE_events_chains.1008.a:0 "Have my followers spread the concept of existentialism!"              #ending 3
+TaE_events_chains.1008.b:0 "It is time to reform the religion!"                                   #ending 3 Theologian + devotion 3+ 
+TaE_events_chains.1008.c:0 "My mind and body is ready..."                                         #ending 3
+TaE_events_chains.1008.d:0 "Maybe I went too far..."                                              #ending base
+
+#Law and Order Continued 
+TaE_events_chains.1009.t:0 "Madness"
+TaE_events_chains.1009.desc:0 "I have seized anyone and everyone that dared to question my authority, who gave them the rights to my vision? Peasants, they would suffer without my great authority. The stench of burning men and the sounds of wailing women and children is only a small price to true freedom, they do not need to think for themselves, I will do it for them. My own spouse refuses to see me anymore but what do I care, I can always get another one..."
+TaE_events_chains.1009.a:0 "Insects, insects all of you!"                                       #ending 1
+
+#Man or Butterfly Endings 
+
+#Ending Base 
+TaE_events_chains.1010.t:0 "Man or Butterfly, an end?"
+TaE_events_chains.1010.desc:0 "Beyond all that has happened, the dream lingers at the back of my mind, taunting me as if I missed something. Is there something greater to life or am I just being delusional? A man, or a butterfly?"
+TaE_events_chains.1010.a:0 "Another day, another dream"
+
+#Ending Bad
+TaE_events_chains.1011.t:0 "Man or Butterfly, an end"
+TaE_events_chains.1011.desc:0 "Life has not been good, I long for the great beyond and it seems the great ones have answered. Farewell my loyal subjects and may the next king be stronger and better."
+TaE_events_chains.1011.a:0 "Farewell."
+
+#Ending 1
+TaE_events_chains.1012.t:0 "The iron fist"
+TaE_events_chains.1012.desc:0 "I see now, everything is clear to me from my dream. The world is cruel and so I must be cruel to survive! I will see to it that every man, woman, and child who went against me will be severely punished and those that continue to do so killed! A man or a butterfly? Neither! I am the keeper of peace and the keystone to stability, I am law itself!"
+TaE_events_chains.1012.a:0 "Your subjects tremble at your presence, your actions have brought order, for now..."   
+
+#Ending 2
+TaE_events_chains.1013.t:0 "An end"
+TaE_events_chains.1013.desc:0 "I feel cold. I have no appetite and feel no joy in the things I used to. I have gained knowledge, but at what price? I feel… I feel old."
+TaE_events_chains.1013.a:0 "Everything has a price"
+
+#Ending 3
+TaE_events_chains.1014.t:0 "Irony?"
+TaE_events_chains.1014.desc:0 "Ironic isn’t it, how the people have united over the concept of existentialism. The people who have grown so selfish and greedy are already beginning to change slowly. The poor and the sick are given care by passerbyers, the city is changing. A simple dream of a butterfly changing the course of history, fluttering hither and thither. But truly, am I a man or a butterfly?"
+TaE_events_chains.1014.a:0 "To live, is to be."
+
+#Ending 4 
+TaE_events_chains.1015.t:0 "The little things in life."
+TaE_events_chains.1015.desc:0 "I shouldn't dwell on things that are of not the uptmost importance. To enjoy the company of your spouse, now that is far more important than some menial dream. Life, can be good."
+TaE_events_chains.1015.a:0 "Perhaps I can relax a little longer..."
+
+
+#------------------------------------------------------------------------------------------------------------

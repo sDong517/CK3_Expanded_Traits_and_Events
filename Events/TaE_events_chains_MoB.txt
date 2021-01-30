@@ -1,0 +1,687 @@
+#############################################################################################################################
+# 
+# Events chains from medium to large 
+# 
+# 
+# 1000 - 1015               A Man or Butterfly? 
+# 
+# 
+# 
+############################################################################################################################
+
+namespace = TaE_events_chains 
+
+
+##################################################################################################################################################################
+#                       A man or a butterfly?
+#                           Fleece Johnson
+#
+#           Flags      Ending 1: MoB_martial     Ending 3: MoB_learning 
+#
+###################################################################################################################################################################
+
+#Man or Butterfly, precondition 
+TaE_events_chains.1000 = {
+	hidden = yes
+    #if this chain has not been completed yet AND the character is not in the 'dumb' group 
+    trigger = {
+        NOT = { has_character_flag = TaE_MoB_chain_started }
+        NOT = { has_global_variable = TaE_MoB_chain_completed }
+
+        NOT = { has_trait = imbecile
+                has_trait = stupid
+                has_trait = slow
+        }
+        OR = { 
+            learning >= 15
+            has_trait = genius
+            has_trait = intelligent
+            has_trait = quick
+            
+        }
+    }
+    #weight multiplier
+    weight_multiplier = {
+        base = .5
+        modifier = {
+            add = .3
+            has_trait = mystic
+        }
+        modifier = {
+            add = .3
+            has_trait = scholar
+        }
+        modifier = {
+            add = .2
+            has_trait = theologian
+        }
+        modifier = {
+            add = .3
+            has_trait = mystic
+        }
+        modifier = {
+            add = .3
+            has_trait = genius
+        }
+        modifier = {
+            add = .3
+            has_trait = possessed
+        }
+    }
+    #if conditions are met and chances are good 
+    immediate = {
+        add_character_flag = TaE_MoB_chain_started 
+        trigger_event = {
+            id = TaE_events_chains.1001
+        }
+    }
+
+}
+
+#MoB Initial COMPLETED
+TaE_events_chains.1001 = {
+	type = character_event
+	title = TaE_events_chains.1001.t
+	desc = TaE_events_chains.1001.desc 
+	theme = mental_health 
+    override_background = { event_background = bedchamber }
+
+    immediate = {
+        random_held_title = {
+            save_scope_as = scholar_county
+        }
+    }
+
+	left_portrait = {
+		character = root
+		animation = worry 
+    }
+
+	option = { #A branch 
+        name = TaE_events_chains.1001.a 
+
+		trigger_event = {
+			id = TaE_events_chains.1002
+		}
+	}
+
+	option = { #Ending Base 
+        name = TaE_events_chains.1001.b 
+        trigger_event = {
+            id = TaE_events_chains.1010
+        }
+	}
+
+	option = { #B Branch High learning >30 
+        name = TaE_events_chains.1001.c 
+        trigger = {
+            learning >= 25
+        }
+        trigger_event = {
+            id = TaE_events_chains.1007
+        }
+    }
+    
+    option = {  #Ends life
+        name = TaE_events_chains.1001.d
+        trigger_event = {
+            id = TaE_events_chains.1011 
+        }
+    }
+
+}
+
+#----------------------------------------------------------MAJOR BRANCH----------------------------------------------------------------
+TaE_events_chains.1002 = {  #BRANCH A COMPLETED
+	type = character_event
+	title = TaE_events_chains.1002.t
+	desc = TaE_events_chains.1002.desc 
+	theme = mental_health 
+	override_background = { event_background = bedchamber }
+
+	left_portrait = {
+		character = root 
+		animation = worry 
+	}
+
+	option = { #Ending Base  
+        name = TaE_events_chains.1002.a 
+        trigger_event = {
+            id = TaE_events_chains.1010
+        }
+	}
+
+	option = { #A Branch Choice 1  
+        name = TaE_events_chains.1002.b 
+        #trigger = {
+        #    OR = {
+        #        has_trait = possessed
+        #        has_trait = lunatic 
+        #        has_trait = paranoid
+        #        has_trait = wrathful 
+        #        has_trait = vengeful
+        #        has_trait = arbitrary 
+        #    }
+        #}
+        add_martial_skill = 1
+        add_dread = 5 
+        trigger_event = {
+            id = TaE_events_chains.1003
+        }
+	}
+
+	option = { #A Branch Choice 2 
+        name = TaE_events_chains.1002.c 
+        trigger = {
+            OR = {
+                has_trait = theologian
+                has_trait = zealous
+                has_trait = diligent 
+            }
+        }
+        add_piety = 50 
+        trigger_event = {
+            id = TaE_events_chains.1004 
+        }
+	}
+}
+
+#----------------------------------------------------------BRANCH CHOICES ----------------------------------------------------------------
+#MoB Branch A Choice 1      COMPLETED
+
+TaE_events_chains.1003 = {
+    type = character_event 
+    title = TaE_events_chains.1003.t
+    desc = TaE_events_chains.1003.desc 
+    theme = mental_health 
+    override_background = { event_background = study }
+
+    left_portrait = {
+        character = root
+        theme = anger 
+    }
+
+    option = {  #Choice 3
+        name = TaE_events_chains.1003.a 
+        trigger_event = {
+            id = TaE_events_chains.1010
+        }
+    }
+
+    option = { #Ending 1
+        name = TaE_events_chains.1003.b
+
+        add_trait = paranoid
+        trigger_event = {
+            id = TaE_events_chains.1012
+        }
+    }
+
+    option = { #Choice 2
+        name = TaE_events_chains.1003.c
+
+        trigger = {
+            OR = {
+                has_trait = theologian
+                has_trait = zealous
+            }
+        }
+        add_piety = 50
+
+        trigger_event = {
+            id = TaE_events_chains.1004
+        }
+    }
+
+    option = { #ending base 
+        name = TaE_events_chains.1003.d 
+        trigger_event = {
+            id = TaE_events_chains.1010 
+        }
+    }
+}
+
+#MoB Branch A Choice 2
+TaE_events_chains.1004 = {
+    type = character_event
+	title = TaE_events_chains.1004.t
+	desc = TaE_events_chains.1004.desc 
+	theme = default 
+	override_background = { event_background = study }
+
+	left_portrait = {
+		character = root 
+		animation = happiness 
+    }
+
+    right_portrait = {
+        character = scope:medium_scholar 
+        animation = happiness 
+    }
+
+    immediate = {
+        hidden_effect = {
+            create_character = {
+                location = root.capital_province
+                age = { 18 25 }
+                gender = scope:dummy_mystic_gender
+                trait = education_learning_2
+                trait = intellect_good_2
+                faith = this.faith
+                culture = this.culture
+                learning = { 10 15 }
+                save_scope_as = medium_scholar
+            }
+        }
+    }
+
+    option = { #A medium scholar will appear 
+    name = TaE_events_chains.1004.a 
+
+    add_courtier = scope:medium_scholar
+    reverse_add_opinion = {
+        modifier = grateful_opinion
+        target = scope:medium_scholar
+        opinion = 20 
+    }
+    trigger_event = {
+        id = TaE_events_chains.1010
+        }
+    }
+
+    option = {  #Branch C
+        name = TaE_events_chains.1004.b 
+
+        trigger = {
+            OR = {
+                has_trait = theologian
+                has_trait = zealous
+            }
+        }
+        trigger_event = {
+            id = TaE_events_chains.1008
+        }
+    }
+
+    option = { #Choice 3
+        name = TaE_events_chains.1004.c
+        add_learning_skill = 1
+
+        trigger_event = {
+            id = TaE_events_chains.1005 
+        }
+    }
+
+}
+
+#MoB Choice 3
+TaE_events_chains.1005 = {
+    type = character_event
+	title = TaE_events_chains.1004.t
+	desc = TaE_events_chains.1004.desc 
+	theme = mental_break 
+	override_background = { event_background = study }
+
+	left_portrait = {
+		character = root 
+		animation = worry 
+    }
+
+    option = { #Ending 2
+        name = TaE_events_chains.1005.a
+        trigger_event = {
+            id = TaE_events_chains.1013
+        }
+    }
+
+    option = { #Choice 4
+        name = TaE_events_chains.1005.b
+        trigger_event = {
+            id = TaE_events_chains.1006
+        }
+    }
+}
+
+#MoB Choice 4
+TaE_events_chains.1006 = {
+    type = character_event
+	title = TaE_events_chains.1004.t
+	desc = TaE_events_chains.1004.desc 
+	theme = love
+	override_background = { event_background = bedchamber }
+
+	left_portrait = {
+		character = root 
+		animation = happiness 
+    }
+
+    right_portrait = {
+        character = primary_spouse
+        animation = happiness
+    }
+
+    option = { #Ending 4
+        name = TaE_events_chains.1006.a 
+        trigger_event = {
+            id = TaE_events_chains.1015
+        }
+    }
+}
+
+#--------------------------------------------------------------------------------------------------------------------------
+
+#Branch B   COMPLETED
+TaE_events_chains.1007 = {
+    type = character_event
+	title = TaE_events_chains.1007.t
+	desc = TaE_events_chains.1007.desc 
+	theme = mental_health 
+	override_background = { event_background = study }
+
+	left_portrait = {
+		character = root 
+		animation = happiness 
+    }
+
+    right_portrait = {
+        character = scope:scholar
+        animation = default 
+    }
+
+    #Creates a scholar of at least 20 learning and genius 
+    immediate = {
+        hidden_effect = {
+            create_character = {
+                location = root.capital_province
+                age = { 18 25 }
+                gender = scope:dummy_mystic_gender
+                trait = education_learning_3
+                trait = intellect_good_3
+                faith = this.faith
+                culture = this.culture
+                learning = { 20 25 }
+                save_scope_as = scholar
+            }
+        }
+    }
+
+    option = { #Ending base     #Recruits scholar 
+        name = TaE_events_chains.1007.a 
+
+        add_learning_skill = 2 
+        add_courtier = scope:scholar
+        reverse_add_opinion = {
+            modifier = grateful_opinion
+            target = scope:scholar
+            opinion = 30 
+        }
+        trigger_event = {
+            id = TaE_events_chains.1010
+        }
+    }
+
+    option = { #Branch C       Piety line
+        name = TaE_events_chains.1007.b 
+
+        add_piety = 100 
+        trigger_event = {
+            id = TaE_events_chains.1008
+        }
+    }
+}
+
+#Branch C   COMPLETED
+TaE_events_chains.1008 = {
+    type = character_event
+	title = TaE_events_chains.1008.t
+	desc = TaE_events_chains.1008.desc 
+	theme = education 
+    override_background = { event_background = study } 
+    
+    left_portrait = {
+        character = root
+        animation = default 
+    }
+
+    #IMPLEMENT EXISTENTIALISM WHEN YOU ARE READY 
+    option = { #Ending 3
+        name = TaE_events_chains.1008.a 
+        add_piety = 100
+
+        trigger_event = {
+            id = TaE_events_chains.1014
+        }
+    }
+
+    option = { #Ending 3 Theologian AND devotion 2+ requirement 
+        name = TaE_events_chains.1008.b
+        trigger = {
+            piety_level >= 2
+        }
+
+        add_piety = 1500 
+        trigger_event = {
+            id = TaE_events_chains.1014
+        }
+    }
+
+    option = { #Ending 3 zealous AND devotion 3+ requirement 
+        name = TaE_events_chains.1008.c
+        trigger = {
+            piety_level >= 3
+        }
+
+        add_piety = 900 
+        trigger_event = {
+            id = TaE_events_chains.1014
+        }
+    }
+
+    option = { #Ending Base 
+        name = TaE_events_chains.1008.d
+        add_prestige = 500 
+        trigger_event = {
+            id = TaE_events_chains.1010
+        }
+    }
+
+}
+
+#----------------------------------------------------------MoB ENDINGS-----------------------------------------------------------------------------------------------#
+
+#MoB Ending Base
+TaE_events_chains.1010 = {
+    type = character_event
+    title = TaE_events_chains.1010.t
+    desc = TaE_events_chains.1010.desc
+    theme = mental_health
+    override_background = { event_background = study }
+
+    left_portrait = {
+        character = root
+        animation = happiness 
+    }
+
+    option = { #end
+        name = TaE_events_chains.1010.a
+        add_learning_skill = 1 
+
+        set_global_variable = {
+            name = TaE_MoB_chain_completed
+            value = yes 
+        }
+    }
+}
+
+#MoB Ending Bad
+TaE_events_chains.1011 = {
+    type = character_event
+    title = TaE_events_chains.1011.t
+    desc = TaE_events_chains.1011.desc
+    theme = mental_health
+    override_background = { event_background = garden }
+
+    left_portrait = {
+        character = root
+        animation =  pain
+    }
+
+    option =  { #end
+        name = TaE_events_chains.1011.a
+        trigger_event = {
+            on_action = commit_suicide
+        }
+        set_global_variable = {
+            name = TaE_MoB_chain_completed
+            value = yes 
+        }
+    }
+}
+
+#MoB Ending 1
+TaE_events_chains.1012 = {
+    type = character_event
+    title = TaE_events_chains.1012.t
+    desc = TaE_events_chains.1012.desc
+    theme = dread
+    override_background = { event_background = burning_building } 
+
+    left_portrait = {
+        character = root
+        animation = personality_irrational 
+    }
+
+    immediate = {
+        capital_county = {
+            save_scope_as = tyranny_county 
+        }
+    }
+
+    option = {      #More taxes and control, but less opinion and devlopment 
+        name = TaE_events_chains.1012.a 
+
+        scope:tyranny_county = {
+            add_county_modifier = governance_1001_tyranny_modifier
+            days = 7300 
+        }
+
+        add_dread = 20 
+        add_martial_skill = 3 
+        
+        set_global_variable = {
+            name = TaE_MoB_chain_completed
+            value = yes 
+        }
+    }
+}
+
+#MoB Ending 2
+TaE_events_chains.1013 = {
+    type = character_event
+    title = TaE_events_chains.1013.t
+    desc = TaE_events_chains.1013.desc
+    theme = mental_health 
+    override_background = { event_background = bedchamber }
+
+    left_portrait = {
+        character = root
+        animation = grief
+    }
+    option = {
+        name = TaE_events_chains.1013.a 
+        add_learning_lifestyle_xp = massive_lifestyle_xp
+        add_character_modifier = {
+            modifier = lifestyle_1001_existentialism_modifier
+            days = 7300
+        }
+    }
+}
+
+
+#MoB Ending 3 
+#ADDS TRAIT 'THINKER' IMPLEMENT WHEN YOU ARE READY 
+TaE_events_chains.1014 = {
+    type = character_event
+    title = TaE_events_chains.1014.t
+    desc = TaE_events_chains.1014.desc
+    theme = education 
+    override_background = { event_background = study }
+
+    #Saves a random title you hold into scholar_county
+    #immediate = {
+    #    random_held_title = {
+    #        limit = { tier = tier_county }
+    #        save_scope_as = scholar_county
+    #    }
+    #}
+
+    #Saves your capital into scholar_county
+    immediate = {
+        capital_county = { 
+            save_scope_as = scholar_county
+        }
+    }
+    
+    left_portrait = {
+        character = root
+        animation = happiness 
+    }
+
+    option = {  #County gains 15% increased taxes, 15 opinion, and -15% build time. Character gains +3 learning 
+        name = TaE_events_chains.1014.a
+
+        scope:scholar_county = {
+            add_county_modifier = {
+                modifier = governance_1000_scholar_modifier
+                days = 10950
+            }
+        }
+        add_character_modifier = {
+            modifier = lifestyle_1000_learning_modifier
+            days = 3650
+        }
+        set_global_variable = {
+            name = TaE_MoB_chain_completed
+            value = yes 
+        }
+        set_global_variable = {
+            name = TaE_MoB_chain_completed
+            value = yes 
+
+            name = MoB_learning
+            value = yes
+        }
+    }
+}
+
+#MoB Ending 4
+TaE_events_chains.1015 = {
+    type = character_event
+    title = TaE_events_chains.1015.t
+    desc = TaE_events_chains.1015.desc
+    theme = love 
+    override_background = { event_background = garden }
+
+    left_portrait = {
+        character = root
+        animation = love
+    }
+
+    right_portrait = {
+        character = primary_spouse
+        animation = love 
+    }
+
+    option = {
+        name = TaE_events_chains.1015.a
+        add_character_modifier = {
+            modifier = lifestyle_1002_little_things_modifier
+            days = 7300
+        }
+
+        set_global_variable = {
+        name = TaE_MoB_chain_completed
+        value = yes 
+        }
+    }
+}

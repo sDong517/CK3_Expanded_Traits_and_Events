@@ -1,0 +1,54 @@
+#Modifiers
+
+
+
+#Land Modifiers
+
+#+15% taxes, 15 opinion, -15% build time, +2 learning
+governance_1000_scholar_modifier = {
+	icon = stewardship_positive
+	tax_mult = 0.15
+	county_opinion_add = 15
+	build_speed = -0.15
+	#learning_per_piety_level = 2 
+}
+
+#0.5 control gain/month, -25 opinion, 10% taxes, medium devlopment growth loss 
+governance_1001_tyranny_modifier = {
+	icon = martial_positive
+	development_growth_factor = small_development_growth_loss
+	monthly_county_control_change_add = 0.5
+	tax_mult = 0.15
+	county_opinion_add = -25
+	
+
+}
+
+
+#Character modifier
+
+#+3 learning
+lifestyle_1000_learning_modifier = {
+	icon = learning_positive
+	learning = 3
+}
+
+#+2 learning, monthly learning +25%, massive learning boost, -1 health, 15% increased stress 
+lifestyle_1001_existentialism_modifier = {
+	icon = learning_positive
+	learning = 2 
+	monthly_learning_lifestyle_xp_gain_mult = 0.25
+	#add_learning_lifestyle_xp = medium_lifestyle_xp
+	health = -1
+	stress_gain_mult = 0.15
+
+}
+
+#medium health boost, 15% less stress gain, and 50% increased fertility 
+lifestyle_1002_little_things_modifier = {
+	icon = health_positive
+	stress_gain_mult = -0.15
+	health = 0.5
+	fertility = 0.50
+
+}
